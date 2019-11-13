@@ -1,0 +1,9 @@
+@import url("./normalize.css");
+
+:root {
+  --color: #ff8db7;
+}
+
+body {
+  font-family: '苹方', 'Courier New', Courier, monospace;
+}
