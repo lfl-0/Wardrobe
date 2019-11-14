@@ -14,7 +14,7 @@ import NavBar from "@/components/common/nav-bar/Nav-Bar";
 
 import Swipe from "./home-child/Swipe";
 import Recommend from "./home-child/Recommend";
-import GoodsShow from "./home-child/GoodsShow"
+import GoodsShow from "./home-child/GoodsShow";
 
 import { getHomeMultiData, getHomeGoodsData } from "@/network/home";
 
@@ -44,8 +44,8 @@ export default {
 				this.banners = res.data.banner.list;
 				this.recommends = res.data.recommend.list;
 			});
-    },
-    
+		},
+
 		// 请求首页商品数据
 		getHomeGoodsDataV(type) {
 			const page = this.goods[type].page + 1;
@@ -68,6 +68,7 @@ export default {
 #home {
 	padding-top: 44px;
 	padding-bottom: 60px;
+  background-color: var(--background-color);
 }
 
 .home-navbar {
