@@ -50,7 +50,7 @@ export default {
 	color: #898989;
 }
 .tab-bar-item img {
-	margin-top: 7px;
+	margin-top: 8px;
 	height: 24px;
 }
 .active {

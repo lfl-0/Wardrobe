@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import MainTabBar from "@/components/content/main-tab-bar/Main-Tab-Bar.vue";
+import MainTabBar from "@/components/content/main-tab-bar/Main-Tab-Bar";
 
 export default {
 	components: {
