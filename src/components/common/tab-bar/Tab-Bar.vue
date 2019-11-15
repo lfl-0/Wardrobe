@@ -18,7 +18,7 @@ export default {
 	left: 0;
 	right: 0;
 
-	height: 60px;
+	height: 55px;
 	background-color: #fff;
 	box-shadow: 0 -5px 10px rgba(210, 210, 210, 0.3);
 }

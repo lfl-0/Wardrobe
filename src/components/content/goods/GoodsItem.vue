@@ -27,8 +27,7 @@ export default {
 
 <style>
 .goods-item {
-	break-inside: avoid;
-	width: 100%;
+	width: 48%;
 	margin-bottom: 10px;
 	padding-bottom: 10px;
 	background-color: #fff;
@@ -37,7 +36,11 @@ export default {
 }
 
 .item-img {
+	width: 100%;
 	margin-bottom: 3px;
+}
+.item-img {
+	width: 100%;
 }
 
 .price,

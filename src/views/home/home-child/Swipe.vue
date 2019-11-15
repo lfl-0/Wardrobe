@@ -22,5 +22,6 @@ export default {
 <style>
 .swipe, .swipe img{
   width: 100%;
+  background-color: #fff;
 }
 </style>

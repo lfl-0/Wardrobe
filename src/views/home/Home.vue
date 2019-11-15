@@ -3,14 +3,19 @@
 		<nav-bar class="home-navbar">
 			<div slot="center">购物街</div>
 		</nav-bar>
-		<swipe :banners="banners" />
-		<recommend :recommends="recommends" />
-		<goods-show :goods-data="goods" />
+		<div class="wrapper" ref="wrapper">
+			<swipe :banners="banners" />
+			<recommend :recommends="recommends" />
+			<goods-show :goods-data="goods" @load-more="loadMore" ref="goods" />
+		</div>
+		<back-top v-show="backTopShow" @click.native="backTop" />
 	</div>
 </template>
 
 <script>
 import NavBar from "@/components/common/nav-bar/Nav-Bar";
+import Scroll from "@/components/common/scroll/Scroll";
+import BackTop from "@/components/content/backtop/BackTop";
 
 import Swipe from "./home-child/Swipe";
 import Recommend from "./home-child/Recommend";
@@ -27,7 +32,9 @@ export default {
 				pop: { page: 0, list: [] },
 				new: { page: 0, list: [] },
 				sell: { page: 0, list: [] }
-			}
+			},
+			backTopShow: false,
+			scrollTop: 0 // 滚动的距离
 		};
 	},
 	created() {
@@ -36,6 +43,13 @@ export default {
 		this.getHomeGoodsDataV("pop");
 		this.getHomeGoodsDataV("new");
 		this.getHomeGoodsDataV("sell");
+	},
+	mounted() {
+		this.scrolling();
+	},
+	activated() {
+    // 进入时回到上次的位置
+		this.$refs.wrapper.scrollTop = this.scrollTop;
 	},
 	methods: {
 		// 请求首页banner及推荐数据
@@ -49,14 +63,43 @@ export default {
 		// 请求首页商品数据
 		getHomeGoodsDataV(type) {
 			const page = this.goods[type].page + 1;
-			getHomeGoodsData(type, page).then(res => {
+			return getHomeGoodsData(type, page).then(res => {
 				this.goods[type].list.push(...res.data.list);
 				this.goods[type].page++;
+				return true;
+			});
+		},
+
+		// 上拉加载更多
+		loadMore(type) {
+			if (this.getHomeGoodsDataV(type)) {
+				setTimeout(() => {
+					this.$refs.goods.loading = false;
+				}, 500);
+			}
+		},
+
+		// 监听滚动
+		scrolling() {
+			const wrapper = this.$refs.wrapper;
+			wrapper.onscroll = () => {
+				this.scrollTop = wrapper.scrollTop;
+				this.backTopShow = wrapper.scrollTop > 2000;
+			};
+		},
+
+		// 回到顶部
+		backTop() {
+			this.$refs.wrapper.scrollTo({
+				top: 0,
+				behavior: "smooth"
 			});
 		}
 	},
 	components: {
 		NavBar,
+		Scroll,
+		BackTop,
 		Swipe,
 		Recommend,
 		GoodsShow
@@ -64,17 +107,31 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #home {
+	position: relative;
+	height: 100vh;
 	padding-top: 44px;
-	padding-bottom: 60px;
-  background-color: var(--background-color);
+	padding-bottom: 55px;
+	background-color: var(--background-color);
 }
 
 .home-navbar {
-	background-color: var(--color);
+	position: fixed;
+	top: 0;
 	color: #fff;
+	background-color: var(--color);
 	letter-spacing: 3px;
 	z-index: 10;
+}
+
+.wrapper {
+	position: absolute;
+	top: 44px;
+	bottom: 55px;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+	overflow-y: scroll;
 }
 </style>

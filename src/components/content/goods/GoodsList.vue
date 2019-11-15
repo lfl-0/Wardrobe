@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import GoodsItem from "./GoodsItem";
+import GoodsItem from "./GoodsItem.vue";
 
 export default {
 	props: {
@@ -24,12 +24,9 @@ export default {
 
 <style>
 .goods-list {
-  /* display: flex;
+  display: flex;
   flex-wrap: wrap;
-  justify-content: space-around; */
-  column-count: 2;
-  column-gap: 3%;
-  padding: 0 5px;
+  justify-content: space-around;
   background-color: var(--background-color);
 }
 </style>

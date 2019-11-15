@@ -44,14 +44,14 @@ export default {
 	flex-grow: 1;
 
 	text-align: center;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.25;
 	letter-spacing: 1px;
 	color: #898989;
 }
 .tab-bar-item img {
-	margin-top: 8px;
-	height: 24px;
+	margin-top: 6px;
+	height: 22px;
 }
 .active {
 	color: #ff8db7;
