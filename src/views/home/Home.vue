@@ -21,6 +21,7 @@ import Swipe from "./home-child/Swipe";
 import Recommend from "./home-child/Recommend";
 import GoodsShow from "./home-child/GoodsShow";
 
+import { debounce } from "@/common/utils";
 import { getHomeMultiData, getHomeGoodsData } from "@/network/home";
 
 export default {
@@ -48,7 +49,7 @@ export default {
 		this.scrolling();
 	},
 	activated() {
-    // 进入时回到上次的位置
+		// 进入时回到上次的位置
 		this.$refs.wrapper.scrollTop = this.scrollTop;
 	},
 	methods: {
@@ -81,11 +82,16 @@ export default {
 
 		// 监听滚动
 		scrolling() {
+			const v = this;
 			const wrapper = this.$refs.wrapper;
-			wrapper.onscroll = () => {
-				this.scrollTop = wrapper.scrollTop;
-				this.backTopShow = wrapper.scrollTop > 2000;
-			};
+			wrapper.onscroll = debounce(
+				function() {
+					v.scrollTop = wrapper.scrollTop;
+					v.backTopShow = wrapper.scrollTop > 2000;
+				},
+				100,
+				false
+			);
 		},
 
 		// 回到顶部

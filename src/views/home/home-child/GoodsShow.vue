@@ -42,7 +42,7 @@ export default {
 	},
 	methods: {
 		loadMore() {
-      this.$emit("load-more", this.activeName);
+			this.$emit("load-more", this.activeName);
 		}
 	},
 	components: {
