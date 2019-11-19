@@ -17,9 +17,9 @@ export default {};
   justify-content: center;
   align-items: center;
 
-  width: 30px;
-  height: 30px;
-	font-size: 25px;
+  width: 35px;
+  height: 35px;
+	font-size: 28px;
   color: var(--color);
   border-radius: 50%;
 	background-color: rgba(255, 255, 255, 0.9);

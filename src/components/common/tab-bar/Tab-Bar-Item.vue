@@ -39,7 +39,7 @@ export default {
 };
 </script>
 
-<style>
+<style >
 .tab-bar-item {
 	flex-grow: 1;
 

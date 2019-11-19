@@ -84,14 +84,10 @@ export default {
 		scrolling() {
 			const v = this;
 			const wrapper = this.$refs.wrapper;
-			wrapper.onscroll = debounce(
-				function() {
-					v.scrollTop = wrapper.scrollTop;
-					v.backTopShow = wrapper.scrollTop > 2000;
-				},
-				100,
-				false
-			);
+			wrapper.onscroll = () => {
+				v.scrollTop = wrapper.scrollTop;
+				v.backTopShow = wrapper.scrollTop > 2000;
+			};
 		},
 
 		// 回到顶部
