@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="detail">
 		<detail-navbar />
 		<detail-swiper :top-images="topImages" />
 	</div>
@@ -38,4 +38,7 @@ export default {
 </script>
 
 <style scoped>
+.detail{
+  padding-top: 44px;
+}
 </style>

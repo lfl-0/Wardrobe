@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<nav-bar>
+		<nav-bar class="detail-navbar">
 			<div slot="left">
 				<div class="back-icon" @click="back">
 					<van-icon name="arrow-left" />
@@ -46,6 +46,10 @@ export default {
 </script>
 
 <style scoped>
+.detail-navbar{
+  z-index: 10;
+  background-color: #fff;
+}
 .title {
 	display: flex;
 	font-size: 13px;
