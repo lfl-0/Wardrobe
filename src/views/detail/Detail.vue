@@ -45,9 +45,14 @@ export default {
 </script>
 
 <style scoped>
+<<<<<<< HEAD
 .detail {
   padding-top: 44px;
   height: 100vh;
 	background-color: #f8f8f8;
+=======
+.detail{
+  padding-top: 44px;
+>>>>>>> 6bc3c4d101a1acc816401b9f53ddcf367404ce9e
 }
 </style>

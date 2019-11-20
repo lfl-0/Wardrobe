@@ -46,9 +46,15 @@ export default {
 </script>
 
 <style scoped>
+<<<<<<< HEAD
 .detail-navbar {
 	z-index: 10;
 	background-color: #fff;
+=======
+.detail-navbar{
+  z-index: 10;
+  background-color: #fff;
+>>>>>>> 6bc3c4d101a1acc816401b9f53ddcf367404ce9e
 }
 .title {
 	display: flex;
