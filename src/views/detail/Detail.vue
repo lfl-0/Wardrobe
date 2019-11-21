@@ -7,6 +7,7 @@
 		<shop-info :shop-info="shopInfo" />
 		<detail-info :detail-info-data="detailInfo" />
 		<detail-recommend :recommends="recommends" />
+		<goods-action />
 	</div>
 </template>
 
@@ -18,6 +19,7 @@ import DetailRate from "./detail-child/DetailRate";
 import ShopInfo from "./detail-child/ShopInfo";
 import DetailInfo from "./detail-child/DetailInfo";
 import DetailRecommend from "./detail-child/DetailRecommend";
+import GoodsAction from "./detail-child/GoodsAction";
 
 import { getDetail, GoodsInfoData, getRecommend } from "@/network/detail";
 
@@ -62,7 +64,8 @@ export default {
 		DetailRate,
 		ShopInfo,
 		DetailInfo,
-		DetailRecommend
+		DetailRecommend,
+		GoodsAction
 	}
 };
 </script>
@@ -71,7 +74,7 @@ export default {
 .detail {
 	position: absolute;
 	top: 44px;
-	bottom: 55px;
+	bottom: 50px;
 	left: 0;
 	right: 0;
 	background-color: var(--background-color);

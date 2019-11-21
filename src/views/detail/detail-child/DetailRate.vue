@@ -1,18 +1,21 @@
 <template>
 	<div class="rate-box">
-		<div class="top">
-			<div class="title">商品评价({{ rateNum }})</div>
-			<div class="see-all">查看全部 ></div>
-		</div>
-		<div class="rate">
-			<div class="user">
-				<div class="avatar">
-					<img :src="rateData.user.avatar" alt />
-				</div>
-				<div class="name">{{ rateData.user.uname }}</div>
+		<div>
+			<div class="top">
+				<div class="title">商品评价({{ rateNum }})</div>
+				<div class="see-all">查看全部 ></div>
 			</div>
-			<div class="content">{{ rateData.content }}</div>
-			<div class="desc">{{ rateData.created | formatDate }}&nbsp;{{ rateData.style }}</div>
+			<div v-if="rate.cRate==0" class="no-rate">暂无评价</div>
+			<div v-else class="rate">
+				<div class="user">
+					<div class="avatar">
+						<img :src="rateData.user.avatar" alt />
+					</div>
+					<div class="name">{{ rateData.user.uname }}</div>
+				</div>
+				<div class="content">{{ rateData.content }}</div>
+				<div class="desc">{{ rateData.created | formatDate }}&nbsp;{{ rateData.style }}</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -45,8 +48,10 @@ export default {
 	},
 	watch: {
 		rate() {
-			this.rateNum = this.rate.cRate;
-			this.rateData = this.rate.list[0];
+			if (this.rate.cRate) {
+				this.rateNum = this.rate.cRate;
+				this.rateData = this.rate.list[0];
+			}
 		}
 	},
 	filters: {
@@ -74,6 +79,12 @@ export default {
 .see-all {
 	color: var(--color);
 	font-size: 14px;
+}
+.no-rate {
+	margin: 15px 0;
+	color: var(--text-color);
+	font-size: 14px;
+	text-align: center;
 }
 .rate {
 	margin: 15px 0;
