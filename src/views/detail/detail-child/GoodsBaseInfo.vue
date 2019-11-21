@@ -10,21 +10,34 @@
 		</div>
 		<div class="container card">
 			<span class="card-title">服务</span>
-			<div class="card-text">
-				<span class="service" v-for="(item, index) in goodsInfo.services" :key="index">{{ item.name }}</span>
-			</div>
+			<div class="card-text">{{ services }}</div>
 		</div>
 	</div>
 </template>
 
 <script>
 export default {
+	data() {
+		return {
+			services: ""
+		};
+	},
 	props: {
 		goodsInfo: {
 			type: Object,
 			default() {
 				return {};
 			}
+		}
+	},
+	watch: {
+		goodsInfo() {
+			this.initServices();
+		}
+	},
+	methods: {
+		initServices() {
+			this.services = this.goodsInfo.services.map(item => item.name).join("·");
 		}
 	}
 };
@@ -63,30 +76,29 @@ export default {
 }
 .columns {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	margin-top: 8px;
 }
 .column {
-	flex: 1;
 	text-align: center;
 	font-size: 13px;
 	color: var(--text-color);
 }
 .card {
 	display: flex;
-  align-items: center;
+	align-items: center;
 }
 .card-title {
-  width: 13%;
+	width: 13%;
 	padding-right: 10px;
 	font-size: 14px;
 	color: var(--text-color);
 }
 .card-text {
-  width: 87%;
+	width: 87%;
 	font-size: 13px;
-  color: #333;
-  line-height: 18px;
+	color: #333;
+	line-height: 18px;
 }
 .service:not(:last-child)::after {
 	content: "·";

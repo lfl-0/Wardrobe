@@ -1,45 +1,33 @@
 <template>
-	<div class="goods-item" @click="toDetail">
-		<van-image class="item-img" :src="showImg" alt></van-image>
-		<div class="item-title">{{goodsItem.title}}</div>
-		<div class="item-info">
-			<div class="price">{{goodsItem.price}}</div>
-			<div class="cellect">
-				<van-icon name="star-o" />
-				<span>{{goodsItem.cfav}}</span>
+	<div class="goods-item">
+		<a :href="recommend.item_url">
+			<van-image class="item-img" :src="recommend.image" alt></van-image>
+			<div class="item-title">{{ recommend.title }}</div>
+			<div class="item-info">
+				<div class="price">{{recommend.price}}</div>
+				<div class="cellect">
+					<van-icon name="star-o" />
+					<span>{{recommend.cfav}}</span>
+				</div>
 			</div>
-		</div>
+		</a>
 	</div>
 </template>
 
 <script>
 export default {
 	props: {
-		goodsItem: {
+		recommend: {
 			type: Object,
-			default: function() {
+			default() {
 				return {};
 			}
-		}
-	},
-	computed: {
-		showImg() {
-			// 判断是首页还是详情
-			return this.goodsItem.image || this.goodsItem.show.img; 
-		}
-	},
-	methods: {
-		toDetail() {
-			this.$router.push({
-				name: "detail",
-				params: { goods_id: this.goodsItem.iid }
-			});
 		}
 	}
 };
 </script>
 
-<style>
+<style scoped>
 .goods-item {
 	width: 48%;
 	margin-bottom: 10px;
@@ -48,7 +36,9 @@ export default {
 	border-radius: 5px;
 	overflow: hidden;
 }
-
+.goods-item a {
+	color: var(--text-color-dark);
+}
 .item-img {
 	width: 100%;
 	margin-bottom: 3px;

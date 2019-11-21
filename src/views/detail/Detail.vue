@@ -2,17 +2,24 @@
 	<div class="detail">
 		<detail-navbar />
 		<detail-swiper :top-images="topImages" />
-		<goods-info :goods-info="goodsInfo" />
+		<goods-base-info :goods-info="goodsInfo" />
+		<detail-rate :rate="rate" />
+		<shop-info :shop-info="shopInfo" />
+		<detail-info :detail-info-data="detailInfo" />
+		<detail-recommend :recommends="recommends" />
 	</div>
 </template>
 
 <script>
 import DetailNavbar from "./detail-child/DetailNavbar";
 import DetailSwiper from "./detail-child/DetailSwiper";
-import GoodsInfo from "./detail-child/GoodsInfo";
+import GoodsBaseInfo from "./detail-child/GoodsBaseInfo";
+import DetailRate from "./detail-child/DetailRate";
+import ShopInfo from "./detail-child/ShopInfo";
+import DetailInfo from "./detail-child/DetailInfo";
+import DetailRecommend from "./detail-child/DetailRecommend";
 
-import { getDetail } from "@/network/detail";
-import { GoodsInfoData } from "@/network/detail";
+import { getDetail, GoodsInfoData, getRecommend } from "@/network/detail";
 
 export default {
 	name: "Detail",
@@ -21,7 +28,11 @@ export default {
 			goodsId: null,
 			goods: {},
 			topImages: [],
-			goodsInfo: {}
+			goodsInfo: {},
+			rate: {},
+			shopInfo: {},
+			detailInfo: {},
+			recommends: []
 		};
 	},
 	created() {
@@ -34,20 +45,36 @@ export default {
 			this.goods = result;
 			this.topImages = result.itemInfo.topImages;
 			this.goodsInfo = new GoodsInfoData(result);
+			this.rate = result.rate;
+			this.shopInfo = result.shopInfo;
+			this.detailInfo = result.detailInfo;
+		});
+
+		// 请求推荐数据
+		getRecommend().then(res => {
+			this.recommends = res.data.list;
 		});
 	},
 	components: {
 		DetailNavbar,
 		DetailSwiper,
-		GoodsInfo
+		GoodsBaseInfo,
+		DetailRate,
+		ShopInfo,
+		DetailInfo,
+		DetailRecommend
 	}
 };
 </script>
 
 <style scoped>
 .detail {
-	padding-top: 44px;
-	height: 100vh;
-	background-color: #f8f8f8;
+	position: absolute;
+	top: 44px;
+	bottom: 55px;
+	left: 0;
+	right: 0;
+	background-color: var(--background-color);
+	overflow-y: scroll;
 }
 </style>
