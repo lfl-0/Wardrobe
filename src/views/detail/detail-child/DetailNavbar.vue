@@ -22,7 +22,7 @@
 </template>
 
 <script>
-const NavBar = () => import("@/components/common/nav-bar/Nav-Bar");
+import NavBar from "@/components/common/nav-bar/Nav-Bar";
 
 export default {
 	data() {
@@ -46,15 +46,9 @@ export default {
 </script>
 
 <style scoped>
-<<<<<<< HEAD
 .detail-navbar {
 	z-index: 10;
 	background-color: #fff;
-=======
-.detail-navbar{
-  z-index: 10;
-  background-color: #fff;
->>>>>>> 6bc3c4d101a1acc816401b9f53ddcf367404ce9e
 }
 .title {
 	display: flex;

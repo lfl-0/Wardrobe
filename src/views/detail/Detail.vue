@@ -7,9 +7,9 @@
 </template>
 
 <script>
-const DetailNavbar = () => import("./detail-child/DetailNavbar");
-const DetailSwiper = () => import("./detail-child/DetailSwiper");
-const GoodsInfo = () => import("./detail-child/GoodsInfo");
+import DetailNavbar from "./detail-child/DetailNavbar";
+import DetailSwiper from "./detail-child/DetailSwiper";
+import GoodsInfo from "./detail-child/GoodsInfo";
 
 import { getDetail } from "@/network/detail";
 import { GoodsInfoData } from "@/network/detail";
@@ -45,14 +45,9 @@ export default {
 </script>
 
 <style scoped>
-<<<<<<< HEAD
 .detail {
-  padding-top: 44px;
-  height: 100vh;
+	padding-top: 44px;
+	height: 100vh;
 	background-color: #f8f8f8;
-=======
-.detail{
-  padding-top: 44px;
->>>>>>> 6bc3c4d101a1acc816401b9f53ddcf367404ce9e
 }
 </style>
