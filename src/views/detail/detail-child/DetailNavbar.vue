@@ -37,6 +37,7 @@ export default {
 		},
 		titleClick(index) {
 			this.currentIndex = index;
+			this.$emit("nav-click", index);
 		}
 	},
 	components: {
@@ -67,17 +68,17 @@ export default {
 	top: 4px;
 }
 .title-actvie {
-  position: relative;
+	position: relative;
 	color: var(--color);
 }
 .title-actvie::after {
-  content: "";
-  position: absolute;
-  bottom: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 32px;
-  height: 2px;
-  background-color: var(--color);
+	content: "";
+	position: absolute;
+	bottom: 8px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 32px;
+	height: 2px;
+	background-color: var(--color);
 }
 </style>

@@ -2,7 +2,7 @@
 	<div class="detail-info">
 		<van-divider>商品详情</van-divider>
 		<div class="detail-image" v-for="(images, index) in detailInfoData.detailImage" :key="index">
-			<van-image v-for="(item, i) in images.list" :key="i" :src="item" fit="contain" />
+			<van-image v-for="(item, i) in images.list" :key="i" :src="item" fit="contain" @load="imgLoad" />
 		</div>
 	</div>
 </template>
@@ -15,6 +15,11 @@ export default {
 			default() {
 				return {};
 			}
+		}
+	},
+	methods: {
+		imgLoad() {
+			this.$emit("imgLoad");
 		}
 	}
 };

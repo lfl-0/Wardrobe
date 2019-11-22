@@ -1,4 +1,4 @@
-function debounce(func, delay = 300, immediate = false) {
+function debounce(func, delay = 100, immediate = false) {
   /**
  * @desc 函数防抖
  * @param func 函数
