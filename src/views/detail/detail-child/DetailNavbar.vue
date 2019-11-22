@@ -27,7 +27,7 @@ import NavBar from "@/components/common/nav-bar/Nav-Bar";
 export default {
 	data() {
 		return {
-			titles: ["商品", "评论", "详情", "推荐"],
+			titles: ["商品", "评价", "详情", "推荐"],
 			currentIndex: 0
 		};
 	},

@@ -23,6 +23,7 @@ import GoodsShow from "./home-child/GoodsShow";
 
 import { debounce } from "@/common/utils";
 import { getHomeMultiData, getHomeGoodsData } from "@/network/home";
+import { backTopMixin } from "@/common/mixin";
 
 export default {
 	data() {
@@ -34,10 +35,10 @@ export default {
 				new: { page: 0, list: [] },
 				sell: { page: 0, list: [] }
 			},
-			backTopShow: false,
 			scrollTop: 0 // 滚动的距离
 		};
 	},
+	mixins: [backTopMixin],
 	created() {
 		this.getHomeMultiDataV();
 
@@ -86,16 +87,8 @@ export default {
 			const wrapper = this.$refs.wrapper;
 			wrapper.onscroll = () => {
 				v.scrollTop = wrapper.scrollTop;
-				v.backTopShow = wrapper.scrollTop > 2000;
+				this.backTopIsShow();
 			};
-		},
-
-		// 回到顶部
-		backTop() {
-			this.$refs.wrapper.scrollTo({
-				top: 0,
-				behavior: "smooth"
-			});
 		}
 	},
 	components: {

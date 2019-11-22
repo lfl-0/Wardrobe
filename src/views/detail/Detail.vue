@@ -10,6 +10,7 @@
 			<detail-recommend :recommends="recommends" ref="racommends" />
 		</div>
 		<goods-action />
+		<back-top v-show="backTopShow" @click.native="backTop" />
 	</div>
 </template>
 
@@ -25,6 +26,7 @@ import GoodsAction from "./detail-child/GoodsAction";
 
 import { getDetail, GoodsInfoData, getRecommend } from "@/network/detail";
 import { debounce } from "@/common/utils";
+import { backTopMixin } from "@/common/mixin";
 
 export default {
 	name: "Detail",
@@ -44,6 +46,7 @@ export default {
 			getCompScrollTop: null
 		};
 	},
+	mixins: [backTopMixin],
 	created() {
 		// 设置防抖函数
 		this.getCompScrollTop = debounce(() => {
@@ -82,10 +85,14 @@ export default {
 		this.scrolling();
 	},
 	methods: {
+		// 监听滚动
 		scrolling() {
 			const wrapper = this.$refs.wrapper;
 			const comp = this.compScrollTop;
 			wrapper.onscroll = () => {
+				// 是否显示回到顶部按钮
+				this.backTopIsShow();
+
 				for (let i in this.compScrollTop) {
 					if (
 						wrapper.scrollTop >= comp[+i] &&
