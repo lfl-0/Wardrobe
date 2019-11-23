@@ -15,7 +15,7 @@ const backTopMixin = {
     backTop() {
       this.$refs.wrapper.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: "instant"
       });
     }
   },

@@ -7,6 +7,7 @@
 			type="warning"
 			color="linear-gradient(to right, #ffa969, #fc794b)"
 			text="加入购物车"
+      @click="addCart"
 		/>
 		<van-goods-action-button
 			type="danger"
@@ -17,7 +18,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    addCart() {
+      this.$emit("addCart")
+    }
+  }
+};
 </script>
 
 <style scoped>

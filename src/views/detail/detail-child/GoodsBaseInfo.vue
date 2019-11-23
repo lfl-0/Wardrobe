@@ -71,8 +71,20 @@ export default {
 .title {
 	margin-top: 5px;
 	line-height: 20px;
-	font-weight: 600;
+	font-size: 15px;
+	font-weight: 700;
 	color: #444;
+}
+.title::before {
+	content: "衣橱";
+  position: relative;
+  top: -1px;
+	padding: 1px 5px;
+  margin-right: 3px;
+	background-color: var(--color-dark);
+	color: #fff;
+	border-radius: 18px;
+  font-size: 12px;
 }
 .columns {
 	display: flex;

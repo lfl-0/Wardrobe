@@ -123,18 +123,18 @@ export default {
 }
 .all-goods,
 .in-shop {
-	padding: 2px 6px;
+	padding: 4px 7px;
 	font-size: 12px;
-	border: 1px solid var(--color);
+	border: 1px solid var(--color-dark);
 	border-radius: 12px;
 }
 .all-goods {
-	color: var(--color);
+	color: var(--color-dark);
 }
 .in-shop {
-	background-color: var(--color);
+	background-color: var(--color-dark);
 	color: #fff;
-	margin-left: 8px;
+	margin-left: 10px;
 }
 .score {
 	display: flex;

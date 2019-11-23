@@ -4,12 +4,13 @@
 		<div class="wrapper" ref="wrapper">
 			<detail-swiper :top-images="topImages" />
 			<goods-base-info :goods-info="goodsInfo" />
+			<goods-sku :sku="sku" :goods="goods" ref="goodsSKu"/>
 			<detail-rate :rate="rate" ref="rate" />
 			<shop-info :shop-info="shopInfo" />
 			<detail-info :detail-info-data="detailInfo" ref="detail" @imgLoad="imgLoaded" />
 			<detail-recommend :recommends="recommends" ref="racommends" />
 		</div>
-		<goods-action />
+		<goods-action @addCart="addCart" />
 		<back-top v-show="backTopShow" @click.native="backTop" />
 	</div>
 </template>
@@ -18,13 +19,14 @@
 import DetailNavbar from "./detail-child/DetailNavbar";
 import DetailSwiper from "./detail-child/DetailSwiper";
 import GoodsBaseInfo from "./detail-child/GoodsBaseInfo";
+import GoodsSku from "./detail-child/GoodsSku";
 import DetailRate from "./detail-child/DetailRate";
 import ShopInfo from "./detail-child/ShopInfo";
 import DetailInfo from "./detail-child/DetailInfo";
 import DetailRecommend from "./detail-child/DetailRecommend";
 import GoodsAction from "./detail-child/GoodsAction";
 
-import { getDetail, GoodsInfoData, getRecommend } from "@/network/detail";
+import { getDetail, GoodsInfoData, getRecommend, Sku } from "@/network/detail";
 import { debounce } from "@/common/utils";
 import { backTopMixin } from "@/common/mixin";
 
@@ -33,8 +35,9 @@ export default {
 	data() {
 		return {
 			isShow: false,
+			res: {},
 			goodsId: null,
-			goods: {},
+
 			topImages: [],
 			goodsInfo: {},
 			rate: {},
@@ -43,7 +46,13 @@ export default {
 			recommends: [],
 			// 各板块距离顶部的距离
 			compScrollTop: [0],
-			getCompScrollTop: null
+			getCompScrollTop: null,
+
+			sku: {},
+			goods: {
+				title: "",
+				picture: ""
+			}
 		};
 	},
 	mixins: [backTopMixin],
@@ -61,7 +70,8 @@ export default {
 		// 请求商品详情数据
 		getDetail(this.goodsId).then(res => {
 			let result = res.result;
-			this.goods = result;
+			this.res = res.result;
+
 			// 轮播图
 			this.topImages = result.itemInfo.topImages;
 			// 基础信息
@@ -72,6 +82,12 @@ export default {
 			this.shopInfo = result.shopInfo;
 			// 详情图片信息
 			this.detailInfo = result.detailInfo;
+
+			// 规格用sku信息
+			this.sku = new Sku(result.skuInfo);
+			// 规格用goods信息
+			this.goods.title = result.itemInfo.title;
+			this.goods.picture = '';
 
 			this.isShow = true;
 		});
@@ -114,12 +130,17 @@ export default {
 		// 点击标题（商品、评论、详情、推荐）切换到相应位置
 		navClick(index) {
 			this.$refs.wrapper.scrollTo(0, this.compScrollTop[index]);
+		},
+
+		addCart() {
+      this.$refs.goodsSKu.show = true
 		}
 	},
 	components: {
 		DetailNavbar,
 		DetailSwiper,
 		GoodsBaseInfo,
+		GoodsSku,
 		DetailRate,
 		ShopInfo,
 		DetailInfo,
