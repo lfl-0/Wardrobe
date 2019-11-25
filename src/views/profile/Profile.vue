@@ -1,13 +1,12 @@
 <template>
-  <h2>我的</h2>
+	<div>
+    <van-button type="primary">主要按钮</van-button>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
-
 </style>

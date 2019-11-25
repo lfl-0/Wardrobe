@@ -1,6 +1,14 @@
-// module.exports = {
-//   devServer: {
-//     host: '192.168.31.69'
-//   }
-// }
+module.exports = {
+  outputDir: 'docs',
+  publicPath: process.env.NODE_ENV === 'production' ? '/vant-demo/' : '/',
+  css: {
+    loaderOptions: {
+      less: {
+        modifyVars: {
+          'hack': `true; @import "F:/Web/wardrobe/src/assets/css/resetVant.less";`
+        }
+      }
+    }
+  }
+};
 
