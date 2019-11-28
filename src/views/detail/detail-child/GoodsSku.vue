@@ -1,12 +1,12 @@
 <template>
 	<div class="sku">
-		<van-sku v-model="show" :sku="sku" :goods="goods" :close-on-click-overlay="true">
-			<template #sku-actions>
-				<div class="van-sku-actions">
-					<van-button square size="large" type="warning">确认</van-button>
-				</div>
-			</template>
-		</van-sku>
+		<van-sku
+			v-model="show"
+			:sku="sku"
+			:goods="goods"
+			@add-cart="itemClick"
+			:close-on-click-overlay="true"
+		/>
 	</div>
 </template>
 
@@ -29,6 +29,14 @@ export default {
 			default() {
 				return {};
 			}
+		}
+	},
+	methods: {
+		itemClick(goods) {
+			this.$store.commit({
+				type: "addToCart",
+				goods
+			});
 		}
 	}
 };

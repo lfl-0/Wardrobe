@@ -5,7 +5,7 @@ module.exports = {
     loaderOptions: {
       less: {
         modifyVars: {
-          'hack': `true; @import "F:/Web/wardrobe/src/assets/css/resetVant.less";`
+          'hack': `true; @import "G:/Web/wardrobe/src/assets/css/resetVant.less";`
         }
       }
     }
