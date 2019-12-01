@@ -4,7 +4,7 @@
 		<div class="wrapper" ref="wrapper">
 			<detail-swiper :top-images="topImages" />
 			<goods-base-info :goods-info="goodsInfo" />
-			<goods-sku :sku="sku" :goods="goods" ref="goodsSKu"/>
+			<goods-sku :sku="sku" :skus="skus" :goods="goods" ref="goodsSKu" />
 			<detail-rate :rate="rate" ref="rate" />
 			<shop-info :shop-info="shopInfo" />
 			<detail-info :detail-info-data="detailInfo" ref="detail" @imgLoad="imgLoaded" />
@@ -44,10 +44,12 @@ export default {
 			shopInfo: {},
 			detailInfo: {},
 			recommends: [],
+
 			// 各板块距离顶部的距离
 			compScrollTop: [0],
 			getCompScrollTop: null,
 
+			skus: [],
 			sku: {},
 			goods: {
 				title: "",
@@ -83,11 +85,13 @@ export default {
 			// 详情图片信息
 			this.detailInfo = result.detailInfo;
 
+			this.skus = result.skuInfo.skus;
+
 			// 规格用sku信息
 			this.sku = new Sku(result.skuInfo);
 			// 规格用goods信息
 			this.goods.title = result.itemInfo.title;
-			this.goods.picture = '';
+			this.goods.picture = result.itemInfo.topImages[0];
 
 			this.isShow = true;
 		});
@@ -133,7 +137,7 @@ export default {
 		},
 
 		addCart() {
-      this.$refs.goodsSKu.show = true
+			this.$refs.goodsSKu.show = true;
 		}
 	},
 	components: {

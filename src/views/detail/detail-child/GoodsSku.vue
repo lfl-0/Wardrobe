@@ -5,6 +5,7 @@
 			:sku="sku"
 			:goods="goods"
 			@add-cart="itemClick"
+			@buy-clicked="itemClick"
 			:close-on-click-overlay="true"
 		/>
 	</div>
@@ -24,6 +25,12 @@ export default {
 				return {};
 			}
 		},
+		skus: {
+			type: Array,
+			default() {
+				return [];
+			}
+		},
 		goods: {
 			type: Object,
 			default() {
@@ -32,10 +39,14 @@ export default {
 		}
 	},
 	methods: {
-		itemClick(goods) {
-			this.$store.commit({
-				type: "addToCart",
-				goods
+		itemClick(skuData) {
+			let id = skuData.selectedSkuComb.id;
+			const goods = this.skus.find(item => item.xdSkuId === id);
+			goods.num = skuData.selectedNum;
+			goods.title = this.goods.title;
+			this.$store.dispatch("addToCart", goods).then(() => {
+        this.show = false;
+        this.$toast('加入成功');
 			});
 		}
 	}
