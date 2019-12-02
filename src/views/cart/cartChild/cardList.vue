@@ -1,7 +1,12 @@
 <template>
 	<div>
-		<div class="goods-card" v-for="goods in cartList" :key="goods.xdSkuId">
-			<van-checkbox class="checkbox" v-model="goods.checked" checked-color="var(--color)" />
+		<!-- <div class="goods-card" v-for="(goods, index) in cartList" :key="index">
+			<van-checkbox
+				class="checkbox"
+				:value="goods.checked"
+				@click.native="checkClick(index)"
+				checked-color="var(--color)"
+			/>
 			<van-card
 				:num="goods.num"
 				:price="goods.nowprice | formatPrice"
@@ -15,33 +20,40 @@
 					</div>
 				</template>
 			</van-card>
-		</div>
+		</div>-->
+		<goods-card
+			v-for="(goods, index) in cartList"
+			:goods="goods"
+			@check-click="changeChecked(index)"
+			@increase="increase(index)"
+			@decrease="decrease(index)"
+			:key="index"
+		/>
 	</div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapState, mapMutations } from "vuex";
+
+import GoodsCard from "./GoodsCard";
 
 export default {
 	computed: {
-		...mapGetters(["cartList"])
+		...mapState(["cartList", "test"])
 	},
-	filters: {
-		formatPrice(price) {
-			return (price / 100).toFixed(2);
-		}
+	methods: {
+		...mapMutations(["increase", "decrease", 'changeChecked'])
+	},
+	components: {
+		GoodsCard
 	}
 };
 </script>
 
 <style scoped>
-.goods-card {
-	display: flex;
-	background-color: #fff;
-}
 .checkbox {
-  margin-left: 10px;
-	width: 40px;
+	margin-left: 10px;
+	width: 30px;
 }
 .van-card {
 	background-color: #fff;

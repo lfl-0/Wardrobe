@@ -10,11 +10,18 @@ const state = {
 const store = new Vuex.Store({
   state,
   getters: {
-    cartLen(state) {
-      return state.cartList.length
+    cartLen({ cartList }) {
+      return cartList.length
     },
-    cartList(state) {
-      return state.cartList
+    totalPrice({ cartList }) {
+      if (cartList.length) {
+        const reducer = (total, goods) => total + goods.nowprice * goods.num
+        const totalPrice = cartList.filter(goods => goods.checked).reduce(reducer, 0)
+        return totalPrice
+      } return 0
+    },
+    isSelectAll({ cartList }) {
+      return cartList.every(goods => goods.checked);
     }
   },
   mutations: {
@@ -23,6 +30,22 @@ const store = new Vuex.Store({
     },
     addNum(state, payload) {
       payload.oldGoods.num += payload.num
+    },
+    changeChecked(state, index) {
+      let goods = state.cartList[index]
+      goods.checked = !goods.checked
+    },
+    increase({ cartList }, index) {
+      cartList[index].num++
+    },
+    decrease({ cartList }, index) {
+      cartList[index].num--
+    },
+    // 全选与反选
+    selectAll({ cartList }, current) {
+      cartList.forEach(goods => {
+        goods.checked = !current
+      });
     }
   },
   actions: {
@@ -36,13 +59,13 @@ const store = new Vuex.Store({
           resolve()
         } else {
           // 新加入商品
-          goods.checked = true
           commit('addCart', { goods })
           resolve()
         }
       })
     }
   }
+
 })
 
 export default store

@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import Vue from "vue"
+
 export default {
 	data() {
 		return {
@@ -42,11 +44,12 @@ export default {
 		itemClick(skuData) {
 			let id = skuData.selectedSkuComb.id;
 			const goods = this.skus.find(item => item.xdSkuId === id);
-			goods.num = skuData.selectedNum;
-			goods.title = this.goods.title;
+      goods.title = this.goods.title;
+      Vue.set(goods, 'num', skuData.selectedNum)
+      Vue.set(goods, 'checked', true)
 			this.$store.dispatch("addToCart", goods).then(() => {
-        this.show = false;
-        this.$toast('加入成功');
+				this.show = false;
+				this.$toast("加入成功");
 			});
 		}
 	}
