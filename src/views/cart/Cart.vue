@@ -6,7 +6,8 @@
 			</template>
 		</nav-bar>
 
-		<cart-list class="cart-list" />
+		<cart-list v-if="cartLen" class="cart-list" />
+		<cart-empty v-else />
 
 		<van-submit-bar :price="totalPrice" button-text="提交订单">
 			<van-checkbox :value="isSelectAll" @click="selectAll" checked-color="var(--color)">全选</van-checkbox>
@@ -17,6 +18,7 @@
 <script>
 import NavBar from "@/components/common/nav-bar/Nav-Bar";
 import CartList from "./cartChild/CardList";
+import CartEmpty from "./cartChild/CartEmpty";
 
 import { mapGetters } from "vuex";
 
@@ -32,7 +34,8 @@ export default {
 	},
 	components: {
 		NavBar,
-		CartList
+		CartList,
+		CartEmpty
 	}
 };
 </script>
@@ -61,6 +64,7 @@ export default {
 }
 
 .van-submit-bar {
+  border-top: 1px solid rgb(241, 241, 241);
 	bottom: 55px;
 	padding-left: 10px;
 }

@@ -1,26 +1,5 @@
 <template>
 	<div>
-		<!-- <div class="goods-card" v-for="(goods, index) in cartList" :key="index">
-			<van-checkbox
-				class="checkbox"
-				:value="goods.checked"
-				@click.native="checkClick(index)"
-				checked-color="var(--color)"
-			/>
-			<van-card
-				:num="goods.num"
-				:price="goods.nowprice | formatPrice"
-				:title="goods.title"
-				:thumb="goods.img"
-			>
-				<template #tags>
-					<div class="tags">
-						<van-tag plain>{{ goods.style }}</van-tag>
-						<van-tag plain>{{ goods.size }}</van-tag>
-					</div>
-				</template>
-			</van-card>
-		</div>-->
 		<goods-card
 			v-for="(goods, index) in cartList"
 			:goods="goods"
