@@ -12,19 +12,19 @@
 			</template>
 		</tab-bar-item>
 
-		<tab-bar-item path="/category">
+		<tab-bar-item path="/message">
 			<template #item-icon>
-				<img src="~@/assets/img/tab-bar/category.png" alt />
+				<img src="~@/assets/img/tab-bar/message.png" alt />
 			</template>
 			<template #item-icon-active>
-				<img src="~@/assets/img/tab-bar/category-active.png" alt />
+				<img src="~@/assets/img/tab-bar/message-active.png" alt />
 			</template>
 			<template #item-text>
-				<div>分类</div>
+				<div>消息</div>
 			</template>
 		</tab-bar-item>
 
-		<tab-bar-item path="/cart">
+		<tab-bar-item path="/cart" dot :info="cartLen">
 			<template #item-icon>
 				<img src="~@/assets/img/tab-bar/cart.png" alt />
 			</template>
@@ -55,6 +55,11 @@ import TabBar from "@/components/common/tab-bar/Tab-Bar";
 import TabBarItem from "@/components/common/tab-bar/Tab-Bar-Item";
 
 export default {
+  computed: {
+    cartLen() {
+      return this.$store.getters.cartLen
+    }
+  },
   components: {
     TabBar,
     TabBarItem

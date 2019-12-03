@@ -1,10 +1,10 @@
 <template>
-  <h2>分类</h2>
+  <h2>消息</h2>
 </template>
 
 <script>
 export default {
-
+  name: 'message'
 }
 </script>
 

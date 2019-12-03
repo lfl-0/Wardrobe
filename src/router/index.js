@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 const Home = () => import('@/views/home/Home.vue')
-const Category = () => import('@/views/category/Category.vue')
+const Message = () => import('@/views/message/Message.vue')
 const Cart = () => import('@/views/cart/Cart.vue')
 const Profile = () => import('@/views/profile/Profile.vue')
 const Detail = () => import('@/views/detail/Detail.vue')
@@ -20,9 +20,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/category',
-    name: 'category',
-    component: Category
+    path: '/message',
+    name: 'message',
+    component: Message
   },
   {
     path: '/cart',

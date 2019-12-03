@@ -3,10 +3,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import FastClick from 'fastclick'
+
 import Vant from 'vant'
 import 'vant/lib/index.less'
 
 Vue.use(Vant)
+
+FastClick.attach(document.body)
 
 Vue.config.productionTip = false
 

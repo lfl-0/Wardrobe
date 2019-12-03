@@ -9,6 +9,7 @@
 		<div :style="activeStyle">
 			<slot name="item-text">text</slot>
 		</div>
+		<div v-if="dotShow" class="dot">{{ info }}</div>
 	</div>
 </template>
 
@@ -20,6 +21,9 @@ export default {
 		},
 		activeStyle() {
 			return this.isActive ? { color: this.activeColor } : {};
+		},
+		dotShow() {
+			return this.dot !== undefined && this.info;
 		}
 	},
 	props: {
@@ -27,7 +31,9 @@ export default {
 		activeColor: {
 			type: String,
 			default: "#ff8db7"
-		}
+		},
+		dot: undefined,
+		info: null
 	},
 	methods: {
 		itemClick() {
@@ -41,11 +47,12 @@ export default {
 
 <style >
 .tab-bar-item {
+	position: relative;
 	flex-grow: 1;
 
 	text-align: center;
-  font-size: 13px;
-  line-height: 1.25;
+	font-size: 13px;
+	line-height: 1.25;
 	letter-spacing: 1px;
 	color: #898989;
 }
@@ -55,5 +62,21 @@ export default {
 }
 .active {
 	color: #ff8db7;
+}
+.dot {
+	position: absolute;
+	top: 3px;
+	left: 52%;
+
+	width: 14px;
+	height: 14px;
+	line-height: 14px;
+	border-radius: 50%;
+	color: #fff;
+	background-color: var(--color);
+
+	font-size: 12px;
+	text-align: center;
+	transform: scale(0.9);
 }
 </style>
