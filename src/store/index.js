@@ -4,7 +4,15 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  cartList: []
+  cartList: [],
+  user: {
+    name: '会飞的键盘',
+    avatar: require('@/assets/img/profile/avatar.gif'),
+    vip: '普通会员',
+    collection: 12,
+    coupon: 5,
+    points: 666
+  }
 }
 
 const store = new Vuex.Store({

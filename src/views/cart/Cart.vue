@@ -2,7 +2,7 @@
 	<div id="cart">
 		<nav-bar class="cart-nav">
 			<template #center>
-				<div>购物车({{ cartLen }})</div>
+				<div class="title">购物车({{ cartLen }})</div>
 			</template>
 		</nav-bar>
 
@@ -41,6 +41,10 @@ export default {
 </script>
 
 <style scoped>
+.title {
+	font-weight: 600;
+	color: var(--text-color-dark);
+}
 #cart {
 	height: 100vh;
 	padding-top: 44px;
@@ -64,7 +68,7 @@ export default {
 }
 
 .van-submit-bar {
-  border-top: 1px solid rgb(241, 241, 241);
+	border-top: 1px solid rgb(241, 241, 241);
 	bottom: 55px;
 	padding-left: 10px;
 }

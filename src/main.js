@@ -6,9 +6,11 @@ import store from './store'
 import FastClick from 'fastclick'
 
 import Vant from 'vant'
+import { Lazyload } from 'vant'
 import 'vant/lib/index.less'
 
 Vue.use(Vant)
+Vue.use(Lazyload)
 
 FastClick.attach(document.body)
 

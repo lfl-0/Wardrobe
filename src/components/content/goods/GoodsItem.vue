@@ -1,6 +1,6 @@
 <template>
 	<div class="goods-item" @click="toDetail">
-		<van-image class="item-img" :src="showImg" alt></van-image>
+		<van-image class="item-img" :src="showImg" lazy-load alt></van-image>
 		<div class="item-title">{{goodsItem.title}}</div>
 		<div class="item-info">
 			<div class="price">{{goodsItem.price}}</div>
@@ -25,7 +25,7 @@ export default {
 	computed: {
 		showImg() {
 			// 判断是首页还是详情
-			return this.goodsItem.image || this.goodsItem.show.img; 
+			return this.goodsItem.image || this.goodsItem.show.img;
 		}
 	},
 	methods: {

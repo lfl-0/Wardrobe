@@ -18,7 +18,7 @@ import GoodsCard from "./GoodsCard";
 
 export default {
 	computed: {
-		...mapState(["cartList", "test"])
+		...mapState(["cartList"])
 	},
 	methods: {
 		...mapMutations(["increase", "decrease", 'changeChecked'])
