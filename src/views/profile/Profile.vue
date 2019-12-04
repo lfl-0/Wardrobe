@@ -1,6 +1,6 @@
 <template>
 	<div class="profile">
-		<nav-bar>
+		<nav-bar class="navbar">
 			<template #center>
 				<div class="title">个人中心</div>
 			</template>
@@ -29,10 +29,14 @@ export default {
 </script>
 
 <style scoped>
+.navbar {
+  background-color: #fff;
+}
 .profile {
 	height: 100vh;
 	padding: 44px 0 55px;
   background-color: #fff;
+  overflow-y: scroll;
 }
 .title {
 	font-weight: 600;

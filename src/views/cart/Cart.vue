@@ -61,7 +61,7 @@ export default {
 .cart-list {
 	position: absolute;
 	top: 44px;
-	bottom: 110px;
+	bottom: 105px;
 	left: 0;
 	right: 0;
 	overflow-y: scroll;
