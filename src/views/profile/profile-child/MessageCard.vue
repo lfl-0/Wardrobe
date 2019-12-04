@@ -40,9 +40,11 @@ export default {
 	margin: 10px auto;
 	padding: 15px;
 	width: 92%;
-	height: 150px;
+	height: 160px;
 	background-image: url("~@/assets/img/profile/card-bg.png");
 	background-size: 100% 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(255, 182, 182, 0.3);
 }
 .user {
 	display: flex;
@@ -73,15 +75,12 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 70%;
-	margin: 0 auto;
+	width: 75%;
+	margin: 25px auto 0;
 	color: #fff;
 	text-align: center;
 }
 .bottom .title {
 	margin-top: 8px;
-}
-.bottom .item {
-  margin-top: 15px;
 }
 </style>

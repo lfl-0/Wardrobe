@@ -30,7 +30,7 @@ export default {
 
 	border-bottom: 1px solid rgb(243, 243, 243);
 	height: 55px;
-	font-size: 18px;
+	font-size: 17px;
 }
 .icon {
 	width: 30px;

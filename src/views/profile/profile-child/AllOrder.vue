@@ -51,7 +51,7 @@ export default {};
   position: absolute;
   left: 0;
   top: 0;
-	height: 18px;
+	height: 16px;
 	width: 5px;
   border-radius: 25%;
 	background-color: var(--color);

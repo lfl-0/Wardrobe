@@ -32,6 +32,7 @@ export default {
 .profile {
 	height: 100vh;
 	padding: 44px 0 55px;
+  background-color: #fff;
 }
 .title {
 	font-weight: 600;
