@@ -68,6 +68,7 @@ export default {
 		getHomeGoodsDataV(type) {
 			const page = this.goods[type].page + 1;
 			return getHomeGoodsData(type, page).then(res => {
+        console.log(res)
 				this.goods[type].list.push(...res.data.list);
 				this.goods[type].page++;
 				return true;
