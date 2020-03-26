@@ -4,7 +4,7 @@
 			<div class="top-left">
 				<div class="logo">
 					<a :href="shopUrl">
-						<img :src="shopLogo" alt />
+						<img :src="'http:' + shopLogo" alt />
 					</a>
 				</div>
 				<div class="shop-name-level">

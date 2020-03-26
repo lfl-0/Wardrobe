@@ -1,7 +1,7 @@
 <template>
 	<van-swipe class="swiper" :autoplay="3000" indicator-color="#fff">
 		<van-swipe-item v-for="(item, index) in topImages" :key="index">
-			<van-image height="300" fit="cover" :src="item"/>
+			<van-image height="300" fit="cover" :src="'http:' + item"/>
 		</van-swipe-item>
 	</van-swipe>
 </template>

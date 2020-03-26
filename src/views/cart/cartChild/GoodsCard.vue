@@ -4,7 +4,7 @@
 			<van-checkbox :value="goods.checked" @click.native="checkClick" checked-color="var(--color)" />
 		</div>
 		<div class="img">
-			<van-image width="90px" height="90px" fit="cover" :src="goods.img" />
+			<van-image width="90px" height="90px" fit="cover" :src="'http:' + goods.img" />
 		</div>
 		<div class="card">
 			<div class="title">{{ goods.title }}</div>
