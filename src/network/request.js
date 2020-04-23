@@ -1,10 +1,8 @@
 import axios from 'axios'
 
-import { BASE_URL } from '@/common/constant'
-
 export function request(config) {
   const instance = axios.create({
-    baseURL: BASE_URL
+    baseURL: "hhhhh"
   })
 
   instance.interceptors.response.use(response => {

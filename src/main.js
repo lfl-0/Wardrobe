@@ -5,7 +5,7 @@ import store from './store'
 
 import Vant from 'vant'
 import { Lazyload } from 'vant'
-import 'vant/lib/index.less'
+import './assets/css/resetVant.less'
 
 Vue.use(Vant)
 Vue.use(Lazyload)

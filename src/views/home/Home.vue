@@ -16,7 +16,6 @@
 
 <script>
 import NavBar from "@/components/common/nav-bar/Nav-Bar";
-import Scroll from "@/components/common/scroll/Scroll";
 import BackTop from "@/components/content/backtop/BackTop";
 
 import Swipe from "./home-child/Swipe";
@@ -95,7 +94,6 @@ export default {
 	},
 	components: {
 		NavBar,
-		Scroll,
 		BackTop,
 		Swipe,
 		Recommend,

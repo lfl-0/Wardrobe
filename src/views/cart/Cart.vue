@@ -17,7 +17,7 @@
 
 <script>
 import NavBar from "@/components/common/nav-bar/Nav-Bar";
-import CartList from "./cartChild/CardList";
+import CartList from "./cartChild/cardList";
 import CartEmpty from "./cartChild/CartEmpty";
 
 import { mapGetters } from "vuex";
