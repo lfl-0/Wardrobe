@@ -1,22 +1,22 @@
-import BackTop from "@/components/content/backtop/BackTop.vue"
+import BackTop from '@/components/content/backtop/BackTop.vue'
 
 const backTopMixin = {
-  data() {
+  data () {
     return {
       backTopShow: false
     }
   },
   methods: {
-    backTopIsShow() {
-      this.backTopShow = this.$refs.wrapper.scrollTop > 2000;
+    backTopIsShow () {
+      this.backTopShow = this.$refs.wrapper.scrollTop > 2000
     },
 
     // 回到顶部
-    backTop() {
+    backTop () {
       this.$refs.wrapper.scrollTo({
         top: 0,
-        behavior: "instant"
-      });
+        behavior: 'instant'
+      })
     }
   },
   components: {

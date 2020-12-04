@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import storage from '@/utils/local-storage'
 
 Vue.use(Vuex)
 
 const state = {
-  cartList: [],
+  cartList: storage.getItem('cartList') || [],
   user: {
     name: '会飞的键盘',
     avatar: require('@/assets/img/profile/avatar.gif'),
@@ -17,63 +18,44 @@ const state = {
 
 const store = new Vuex.Store({
   state,
-  getters: {
-    cartLen({ cartList }) {
-      return cartList.length
-    },
-    totalPrice({ cartList }) {
-      if (cartList.length) {
-        const reducer = (total, goods) => total + goods.nowprice * goods.num
-        const totalPrice = cartList.filter(goods => goods.checked).reduce(reducer, 0)
-        return totalPrice
-      } return 0
-    },
-    isSelectAll({ cartList }) {
-      return cartList.every(goods => goods.checked);
-    }
-  },
   mutations: {
-    addCart(state, payload) {
-      state.cartList.push(payload.goods)
+    addGoods ({ cartList }, goods) {
+      cartList.push(goods)
+      storage.setItem('cartList', cartList)
     },
-    addNum(state, payload) {
-      payload.oldGoods.num += payload.num
+    removeGoods ({ cartList }, index) {
+      cartList.splice(index, 1)
+      storage.setItem('cartList', cartList)
     },
-    changeChecked(state, index) {
-      let goods = state.cartList[index]
-      goods.checked = !goods.checked
+    updateChecked ({ cartList }, { index, newValue = null }) {
+      const goods = cartList[index]
+      goods.checked = newValue || !goods.checked
+      storage.setItem('cartList', cartList)
     },
-    increase({ cartList }, index) {
-      cartList[index].num++
-    },
-    decrease({ cartList }, index) {
-      cartList[index].num--
-    },
-    // 全选与反选
-    selectAll({ cartList }, current) {
-      cartList.forEach(goods => {
-        goods.checked = !current
-      });
+    updateNum ({ cartList }, { index, newNum }) {
+      cartList[index].num = newNum
+      storage.setItem('cartList', cartList)
     }
   },
   actions: {
-    addToCart({ commit, state }, goods) {
-      return new Promise((resolve, reject) => {
-        const oldGoods = state.cartList.find(item => item.xdSkuId == goods.xdSkuId)
-        if (oldGoods) {
+    addToCart ({ commit, state }, goods) {
+      return new Promise(resolve => {
+        const oldIndex = state.cartList.findIndex(
+          item => item.xdSkuId === goods.xdSkuId
+        )
+        if (oldIndex !== -1) {
           // 已有该商品，增加数量
-          let num = goods.num
-          commit('addNum', { oldGoods, num })
+          const newNum = state.cartList[oldIndex].num + goods.num
+          commit('updateNum', { index: oldIndex, newNum })
           resolve()
         } else {
           // 新加入商品
-          commit('addCart', { goods })
+          commit('addGoods', goods)
           resolve()
         }
       })
     }
   }
-
 })
 
 export default store

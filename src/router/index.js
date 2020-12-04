@@ -1,12 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-const Home = () => import('@/views/home/Home.vue')
-const Message = () => import('@/views/message/Message.vue')
-const Cart = () => import('@/views/cart/Cart.vue')
-const Profile = () => import('@/views/profile/Profile.vue')
-const Detail = () => import('@/views/detail/Detail.vue')
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -17,33 +11,45 @@ const routes = [
   {
     path: '/home',
     name: 'home',
-    component: Home
+    component: () =>
+      import(/* webpackChunkName: 'home' */ '@/views/home/Index.vue')
   },
   {
     path: '/message',
     name: 'message',
-    component: Message
+    component: () =>
+      import(/* webpackChunkName: 'message' */ '@/views/message/Index.vue')
   },
   {
     path: '/cart',
     name: 'cart',
-    component: Cart
+    component: () =>
+      import(/* webpackChunkName: 'cart' */ '@/views/cart/Index.vue')
   },
   {
     path: '/profile',
     name: 'profile',
-    component: Profile
+    component: () =>
+      import(/* webpackChunkName: 'profile' */ '@/views/profile/Index.vue')
   },
   {
-    path: '/detail/:goods_id',
+    path: '/detail/:goodsId',
     name: 'detail',
-    component: Detail
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: 'detail' */ '@/views/detail/Index.vue')
+  },
+  {
+    path: '*',
+    name: 'error404',
+    component: () =>
+      import(/* webpackChunkName: '404' */ '@/views/error/404.vue')
   }
 ]
 
 const router = new VueRouter({
-  routes,
-  // mode: "history"
+  mode: 'history',
+  routes
 })
 
 export default router
