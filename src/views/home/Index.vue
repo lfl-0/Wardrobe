@@ -130,6 +130,8 @@ export default {
 <style scoped>
 #home {
   position: relative;
+  padding-top: 44px;
+  padding-bottom: 50px;
   background-color: var(--background-color);
 }
 

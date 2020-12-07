@@ -56,6 +56,8 @@ export default {
 
 <style scoped>
 #message {
+  padding-top: 44px;
+  padding-bottom: 50px;
   background-color: #fff;
 }
 .title {

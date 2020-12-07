@@ -46,8 +46,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .tools {
   margin-left: 15px;
+
+  .cell:last-child {
+    border: none;
+  }
 }
 </style>

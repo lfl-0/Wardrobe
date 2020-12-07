@@ -1,18 +1,23 @@
 # wardrobe
 
-## Project setup
+## 安装依赖
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 启动测试服务器
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 打包
 ```
 npm run build
+```
+
+### 打包后启动本地预览
+```
+npm run preview
 ```
 
 ### Customize configuration

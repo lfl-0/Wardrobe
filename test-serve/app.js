@@ -7,6 +7,10 @@ const app = express()
 app
   .use(history())
   .use(express.static(path.join(__dirname, '../dist')))
-  .listen(5000)
+  .listen(520)
 
-console.log('running: http://localhost:5000')
+console.log(`
+App running at:
+- Local:   http://localhost:520/
+- Network: http://192.168.31.69:520/
+`)

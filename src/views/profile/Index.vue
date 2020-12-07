@@ -33,7 +33,10 @@ export default {
   background-color: #fff;
 }
 #profile {
+  padding-top: 44px;
+  padding-bottom: 55px;
   background-color: #fff;
+  overflow-y: scroll;
 }
 .title {
   font-weight: 600;

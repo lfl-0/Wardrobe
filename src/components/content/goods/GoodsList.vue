@@ -24,12 +24,13 @@ export default {
 
   methods: {
     toDetail (goodsId) {
-      goodsId && this.$router.push({
-        name: 'detail',
-        params: {
-          goodsId
-        }
-      })
+      goodsId &&
+        this.$router.push({
+          name: 'detail',
+          params: {
+            goodsId
+          }
+        })
     }
   },
 

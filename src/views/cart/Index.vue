@@ -93,6 +93,7 @@ export default {
   color: var(--text-color-dark);
 }
 #cart {
+  padding-top: 44px;
   background-color: var(--background-color);
 }
 .cart-nav {
@@ -104,9 +105,10 @@ export default {
 .cart-list {
   position: absolute;
   top: 44px;
-  bottom: 105px;
+  bottom: 100px;
   left: 0;
   right: 0;
+  padding-bottom: 5px;
   overflow-y: scroll;
 
   .checkbox {
