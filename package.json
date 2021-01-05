@@ -9,7 +9,7 @@
     "preview": "node ./test-serve/app.js"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.8.0",
     "vant": "^2.11.1",
     "vue": "^2.6.12",
